@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - SKY DECCAN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpeg" href="cmplogo.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('cyber12.jpg') no-repeat center center/cover;
+            color: white;
+        }
+
+        header {
+            background: #1e1e1e;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reviews-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-group {
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 18px;
+        }
+
+        .details-btn {
+            background: #555;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .review-details {
+            display: none;
+            margin-top: 10px;
+            background: #444;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Customer Reviews</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html" style="color: white;">Home</a></li>
+            <li><a href="book.html" style="color: white;">Book Now</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="reviews-container">
+    <h2>What Our Customers Say</h2>
+    
+    <div class="chart-container">
+        <canvas id="reviewChart"></canvas>
+    </div>
+    
+    <div class="review-group">
+        <p><strong>Gnanesh S</strong> <span class="stars">★★★★★</span></p>
+        <button class="details-btn" onclick="toggleDetails(this)">See Details</button>
+        <div class="review-details">"The best airport maintenance solution ever! Highly recommend!"</div>
+    </div>
+    
+    <div class="review-group">
+        <p><strong>Hariharan T</strong> <span class="stars">★★★★★</span></p>
+        <button class="details-btn" onclick="toggleDetails(this)">See Details</button>
+        <div class="review-details">"Incredible technology. Made runway inspections much faster!"</div>
+    </div>
+    
+    <div class="review-group">
+        <p><strong>Kaushik S</strong> <span class="stars">★★★★★</span></p>
+        <button class="details-btn" onclick="toggleDetails(this)">See Details</button>
+        <div class="review-details">"Very reliable and cost-effective. A game changer!"</div>
+    </div>
+
+    <div class="review-form">
+        <h3>Leave a Review</h3>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="review">Your Review:</label>
+            <textarea id="review" name="review" rows="4" required></textarea>
+            
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    function toggleDetails(button) {
+        let details = button.nextElementSibling;
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Graphical Analysis
+    var ctx = document.getElementById('reviewChart').getContext('2d');
+    var reviewChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['5 Stars', '4 Stars', '3 Stars', '2 Stars', '1 Star'],
+            datasets: [{
+                label: 'Number of Reviews',
+                data: [45, 3, 1, 1, 0],
+                backgroundColor: ['gold', '#c19a6b', '#d2691e', '#8b4513', '#5a2d0c']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
